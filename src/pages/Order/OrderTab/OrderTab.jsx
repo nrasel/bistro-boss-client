@@ -2,7 +2,6 @@ import React from "react";
 import FoodCard from "../../../components/FoodCard/FoodCard";
 
 const OrderTab = ({ items }) => {
-  console.log(items);
   return (
     <div>
       <div className="grid md:grid-cols-3 gap-5">
