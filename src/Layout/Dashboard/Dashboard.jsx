@@ -6,48 +6,90 @@ import {
   CiSearch,
   CiShoppingCart,
 } from "react-icons/ci";
-import { MdOutlineReviews } from "react-icons/md";
+import { LiaUtensilsSolid } from "react-icons/lia";
+import { MdOutlineContactPhone, MdOutlineReviews } from "react-icons/md";
+import { PiUsersThreeLight } from "react-icons/pi";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 
 const Dashboard = () => {
   const [cart] = useCart();
+  const isAdmin = true;
   return (
     <div className="flex">
       {/* dashboard side bar */}
       <div className="w-64 min-h-screen  bg-orange-400 text-black">
         <ul className="menu p-4">
-          <li>
-            <NavLink to="/dashboard/userHome">
-              <CiHome className="text-black text-2xl" />
-              User Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/userHome">
-              <CiCalendarDate className="text-black text-2xl" />
-              Reservation
-            </NavLink>
-          </li>
-          <li className="">
-            <NavLink to="/dashboard/cart">
-              <CiShoppingCart className="text-black text-2xl" />
-              My cart ({cart.length})
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/reservation">
-              <MdOutlineReviews className="text-black text-2xl" />
-              Reservation
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/bookings">
-              <CiBoxList className="text-black text-2xl" />
-              My Bookings
-            </NavLink>
-          </li>
-          <div className="divider divider-info"></div>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/adminHome">
+                  <CiHome className="text-black text-2xl" />
+                  Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addItems">
+                  <LiaUtensilsSolid className="text-black text-2xl" />
+                  Add Item
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink to="/dashboard/manageItem">
+                  <CiBoxList className="text-black text-2xl" />
+                  Manage Item
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageBookings">
+                  <CiBoxList className="text-black text-2xl" />
+                  Manage Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/users">
+                  <PiUsersThreeLight className="text-black text-2xl" />
+                  All Users
+                </NavLink>
+              </li>
+              <div className="divider divider-info"></div>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/dashboard/userHome">
+                  <CiHome className="text-black text-2xl" />
+                  User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/userHome">
+                  <CiCalendarDate className="text-black text-2xl" />
+                  Reservation
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink to="/dashboard/cart">
+                  <CiShoppingCart className="text-black text-2xl" />
+                  My cart ({cart.length})
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reservation">
+                  <MdOutlineReviews className="text-black text-2xl" />
+                  Reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/bookings">
+                  <CiBoxList className="text-black text-2xl" />
+                  My Bookings
+                </NavLink>
+              </li>
+              <div className="divider divider-info"></div>
+            </>
+          )}
+          {/* shared */}
           <li>
             <NavLink to="/">
               <CiHome className="text-black text-2xl" />
@@ -58,6 +100,12 @@ const Dashboard = () => {
             <NavLink to="/">
               <CiSearch className="text-black text-2xl" />
               Menu
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/">
+              <MdOutlineContactPhone className="text-black text-xl" />
+              Contact
             </NavLink>
           </li>
         </ul>

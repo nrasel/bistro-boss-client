@@ -8,6 +8,7 @@ import {
   loadCaptchaEnginge,
   validateCaptcha,
 } from "react-simple-captcha";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { AuthContext } from "../../providers/AuthProvider";
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -119,6 +120,9 @@ const Login = () => {
                 />
               </div>
             </form>
+            <div>
+              <SocialLogin></SocialLogin>
+            </div>
             <p className="text-center mb-2">
               <small>
                 New Here?{" "}

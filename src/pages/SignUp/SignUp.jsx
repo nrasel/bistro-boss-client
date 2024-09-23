@@ -3,8 +3,11 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { AuthContext } from "../../providers/AuthProvider";
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -20,16 +23,24 @@ const SignUp = () => {
       const loggedUser = result.user;
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("User profile updated");
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User Created successfully!",
-            showConfirmButton: false,
-            timer: 1500,
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/user", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added to the  data base");
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Created successfully!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch((error) => {
           console.log(error);
@@ -144,6 +155,7 @@ const SignUp = () => {
                 />
               </div>
             </form>
+            <SocialLogin></SocialLogin>
             <p className="text-center mb-2">
               <small>
                 Already have an account?
