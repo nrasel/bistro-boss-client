@@ -10,11 +10,12 @@ import { LiaUtensilsSolid } from "react-icons/lia";
 import { MdOutlineContactPhone, MdOutlineReviews } from "react-icons/md";
 import { PiUsersThreeLight } from "react-icons/pi";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
 import useCart from "../../hooks/useCart";
 
 const Dashboard = () => {
   const [cart] = useCart();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       {/* dashboard side bar */}
@@ -35,7 +36,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="">
-                <NavLink to="/dashboard/manageItem">
+                <NavLink to={`/dashboard/manageItem`}>
                   <CiBoxList className="text-black text-2xl" />
                   Manage Item
                 </NavLink>

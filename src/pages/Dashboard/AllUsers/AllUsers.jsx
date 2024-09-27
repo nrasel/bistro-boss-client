@@ -10,11 +10,7 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users", {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("access-token")}`,
-        },
-      });
+      const res = await axiosSecure.get("/users");
       return res.data;
     },
   });
@@ -78,33 +74,31 @@ const AllUsers = () => {
             <tbody>
               {/* row 1 */}
               {users.map((user, index) => (
-                <>
-                  <tr key={user._id}>
-                    <th>{index + 1}</th>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>
-                      {user.role === "admin" ? (
-                        "Admin"
-                      ) : (
-                        <button
-                          onClick={() => handleMakeAdmin(user)}
-                          className="btn bg-orange-500 "
-                        >
-                          <PiUsersThreeLight className="text-2xl text-white" />
-                        </button>
-                      )}
-                    </td>
-                    <td>
+                <tr key={user._id}>
+                  <th>{index + 1}</th>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>
+                    {user.role === "admin" ? (
+                      "Admin"
+                    ) : (
                       <button
-                        onClick={() => handleDeleteUser(user)}
-                        className="btn "
+                        onClick={() => handleMakeAdmin(user)}
+                        className="btn bg-orange-500 "
                       >
-                        <CiTrash className="text-2xl text-red-600" />
+                        <PiUsersThreeLight className="text-2xl text-white" />
                       </button>
-                    </td>
-                  </tr>
-                </>
+                    )}
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDeleteUser(user)}
+                      className="btn "
+                    >
+                      <CiTrash className="text-2xl text-red-600" />
+                    </button>
+                  </td>
+                </tr>
               ))}
               {/* row 2 */}
             </tbody>
