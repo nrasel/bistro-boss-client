@@ -5,6 +5,7 @@ import Main from "../Layout/Main";
 import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import Cart from "../pages/Dashboard/Cart";
+import Payment from "../pages/Dashboard/Payment/Payment";
 import Home from "../pages/Home/Home/Home";
 import Menu from "../pages/Home/Menu/Menu";
 import Login from "../pages/Login/Login";
@@ -59,10 +60,14 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      // admin only routes
+      // normal user routes
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
       // admin only routes
       {

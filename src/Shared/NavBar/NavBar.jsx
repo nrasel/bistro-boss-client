@@ -27,7 +27,7 @@ const NavBar = () => {
       <li>
         <Link to="/order/salad">Order</Link>
       </li>
-      {user && isAdmin && (
+      {/* {user && isAdmin && (
         <li>
           <Link to="/dashboard/adminHome">Dashboard</Link>
         </li>
@@ -36,7 +36,7 @@ const NavBar = () => {
         <li>
           <Link to="/dashboard/userHome">Dashboard</Link>
         </li>
-      )}
+      )} */}
       <li>
         <Link to="/dashboard/cart" className="p-0">
           <button className="btn">

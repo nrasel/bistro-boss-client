@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUtensils } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
@@ -11,7 +12,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const UpdateItem = () => {
   const { name, category, recipe, price, _id } = useLoaderData();
-  console.log(name);
+
   const { register, handleSubmit } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
@@ -45,7 +46,7 @@ const UpdateItem = () => {
         });
       }
     }
-    console.log(res.data);
+    // console.log(res.data);
   };
   return (
     <div>
