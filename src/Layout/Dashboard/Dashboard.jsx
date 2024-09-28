@@ -64,7 +64,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/userHome">
+                <NavLink to="/dashboard/history">
                   <CiCalendarDate className="text-black text-2xl" />
                   Reservation
                 </NavLink>
@@ -82,9 +82,9 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/bookings">
+                <NavLink to="/dashboard/paymentHistory">
                   <CiBoxList className="text-black text-2xl" />
-                  My Bookings
+                  Real Payment History
                 </NavLink>
               </li>
               <div className="divider divider-info"></div>
