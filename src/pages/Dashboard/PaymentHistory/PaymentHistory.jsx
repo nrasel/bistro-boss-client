@@ -34,7 +34,7 @@ const PaymentHistory = () => {
               {/* row 1 */}
 
               {payments.map((pay, index) => (
-                <tr className="bg-base-200">
+                <tr key={pay._id} className="bg-base-200">
                   <th>{index + 1}</th>
                   <td>{user.email}</td>
                   <td>{pay.transactionId}</td>

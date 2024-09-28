@@ -93,7 +93,7 @@ const AdminHome = () => {
         {user?.displayName ? user.displayName : "Back"}
       </h2>
 
-      <div>
+      <div className="mt-10">
         <div className="stats shadow w-full ">
           <div className="stat">
             <div className="stat-figure text-secondary">
@@ -132,7 +132,7 @@ const AdminHome = () => {
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex justify-center items-center mt-15">
         <div className="w-1/2">
           <BarChart
             width={500}
